@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app_sanliurfa/view/navviews/exit_view.dart';
 import 'package:flutter_app_sanliurfa/view/navviews/home_view.dart';
 import 'package:flutter_app_sanliurfa/view/navviews/my_view.dart';
@@ -21,6 +22,9 @@ class _MainViewState extends State<MainView> {
   void ontap(int index) {
     setState(() {
       currentIndex = index;
+      if (currentIndex == 3) {
+        SystemNavigator.pop();
+      }
     });
   }
 
