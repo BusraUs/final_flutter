@@ -22,6 +22,7 @@ class _TanitimSayfasiState extends State<TanitimSayfasi> {
   void initState() {
     super.initState();
     _updateSeen();
+
   }
 
   @override
