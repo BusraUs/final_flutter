@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_sanliurfa/core/colors.dart';
 import 'package:flutter_app_sanliurfa/widget/app_baslik_text.dart';
 import 'package:flutter_app_sanliurfa/widget/app_icerik_text.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -35,6 +38,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     "4",
     "5",
   ];
+  File? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +53,37 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
           SizedBox(height: 10),
           //tabbarbaslik(tabController: _tabController),
           Center(
-            child: Container(
-              height: 350,
-              width: double.infinity,
-              child: Center(
-                child: Image.asset(
-                  "assets/images/tarama-1.jpg",
-                  fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: () async {
+                final file = await ImagePicker.platform
+                    .getImage(source: ImageSource.camera);
+
+                print(file?.path);
+
+                setState(() {
+                  selectedImage = file?.path != null ? File(file!.path) : null;
+                });
+              },
+              child: Container(
+                height: 350,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    if (selectedImage == null)
+                      Center(
+                        child: Image.asset(
+                          "assets/images/tarama-1.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    if (selectedImage != null)
+                      Image.file(
+                        selectedImage!,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                        height: 250,
+                      ),
+                  ],
                 ),
               ),
             ),

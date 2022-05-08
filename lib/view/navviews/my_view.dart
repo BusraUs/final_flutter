@@ -14,19 +14,6 @@ class _MyViewState extends State<MyView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            final file =
-                await ImagePicker.platform.getImage(source: ImageSource.camera);
-
-            print(file?.path);
-
-            setState(() {
-              selectedImage = file?.path != null ? File(file!.path) : null;
-            });
-          },
-          child: const Icon(Icons.camera),
-        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,13 +23,6 @@ class _MyViewState extends State<MyView> {
                 style: TextStyle(fontSize: 35),
               ),
             ),
-            if (selectedImage != null)
-              Image.file(
-                selectedImage!,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                height: 250,
-              ),
           ],
         ));
   }
