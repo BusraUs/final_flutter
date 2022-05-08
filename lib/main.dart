@@ -7,11 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool seen;
-  seen = prefs.getBool('seen')!;
+  bool? seen;
+  seen = prefs.getBool('seen');
   Widget _screen;
   if (seen == null || seen == false) {
     _screen = TanitimSayfasi();

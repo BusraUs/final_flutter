@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ExitView extends StatelessWidget {
@@ -5,11 +7,6 @@ class ExitView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'ÇIKIŞ SAYFASI',
-        style: TextStyle(fontSize: 35),
-      ),
-    );
+    return exit(0);
   }
 }

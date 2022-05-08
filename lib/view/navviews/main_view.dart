@@ -22,9 +22,6 @@ class _MainViewState extends State<MainView> {
   void ontap(int index) {
     setState(() {
       currentIndex = index;
-      if (currentIndex == 3) {
-        SystemNavigator.pop();
-      }
     });
   }
 
